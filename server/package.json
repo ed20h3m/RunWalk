@@ -2,11 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "main.js",
   "scripts": {
     "test": "jest --forceExit",
     "server": "nodemon main.js",
-    "start": "node server.js",
+    "start": "node main.js",
     "client": "npm start --prefix ../client",
     "build": "npm install && cd ../client && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\""
