@@ -1,4 +1,6 @@
 const app = require("./server");
+const path = require("path");
+require("dotenv").config();
 
 // Set port number
 const PORT = process.env.PORT || 5000;
