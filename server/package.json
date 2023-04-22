@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --forceExit",
     "server": "nodemon main.js",
+    "start": "node server.js",
     "client": "npm start --prefix ../client",
+    "build": "npm install && cd ../client && npm install && npm run build ",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
