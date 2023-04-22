@@ -1,0 +1,14 @@
+.sidebar-page {
+  height: 100vh;
+}
+.nav-link {
+  color: white !important;
+  background-color: black !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  height: fit-content;
+}
+.sidebar-page .nav-link.selected {
+  background-color: #333 !important;
+  color: #fff;
+}

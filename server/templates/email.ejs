@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div
+      class="card-container"
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        color: #333 !important;
+      "
+    >
+      <div
+        class="card"
+        style="
+          padding: 1rem;
+          min-height: 500px;
+          min-width: 600px;
+          border: none;
+          box-shadow: 3px 3px 25px #1111, -3px -3px 25px #1111;
+          color: #333 !important;
+        "
+      >
+        <header style="border-bottom: 1px solid #333">
+          <h2>Booking Confirmation</h3>
+        </header>
+        <main style="margin-top: 1rem">
+          <% for(let i=0; i < items.length; i++) { %>
+            <div class="item" style="border-bottom: 1px solid #333">
+              <div
+                class="split"
+                style="
+                  padding: 5px;
+                  display: flex;
+                  justify-content: space-between;
+                  color: #333 !important;
+                "
+              >
+                <div>
+                  <h3 style="margin-bottom: 1rem"><%= items[i].Facility%> </h3>
+                  <h4>Quantity</h4>
+                  <h4>Time</h4>
+                  <h4>Duration</h4>
+                  <h4>Price</h4>
+                </div>
+                <div class="right" style="margin-top: 2.5rem">
+                  <h4>1x</h4>
+                  <h4>10:00 PM</h4>
+                  <h4><%= items[i].Duration %> mins</h4>
+                  <h4>£5.00</h4>
+                </div>
+              </div>
+            </div>
+         <% } %>
+        </main>
+        <footer style="margin-top: 1rem">
+          <div class="item">
+            <div
+              class="split"
+              style="
+                padding: 5px;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <h2>Total</h2>
+                <h2>£ <%= items.reduce((a,b) => a + b.Price,0) %></h2>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

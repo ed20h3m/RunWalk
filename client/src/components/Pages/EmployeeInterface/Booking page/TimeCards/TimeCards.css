@@ -1,0 +1,27 @@
+.time-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  align-items: center;
+
+}
+  
+  .time-card {
+    background-color: #f5f5f5;
+    border: 1px solid #dcf7fa;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .time-card:hover {
+    background-color: #aed7eb;
+  }
+  
+  .selected {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  

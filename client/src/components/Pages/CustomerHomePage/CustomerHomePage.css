@@ -1,0 +1,41 @@
+.customer-home-page {
+  min-height: 100vh;
+  max-width: 1700px;
+  margin: 0 auto;
+  /* background-color: #222; */
+}
+.customer-home-page main {
+  padding: 2rem 1rem 2rem 1rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  justify-items: center;
+}
+.no-booking {
+  display: flex;
+  justify-content: center;
+  justify-items: flex-start;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  color: #fff;
+}
+@media screen and (max-width: 1500px) {
+  .customer-home-page main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 1250px) and (min-width: 700px) {
+  .customer-home-page main {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .customer-home-page main {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 2rem 5px 2rem 5px;
+    grid-gap: 1rem;
+  }
+}

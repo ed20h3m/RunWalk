@@ -1,0 +1,117 @@
+.activity {
+  height: 300px;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.activity-header .text p {
+  width: 90%;
+  word-wrap: break-word;
+}
+.activity-header .text {
+  position: absolute;
+  height: 100%;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.activity-header:hover .text {
+  background-color: #000;
+  display: flex;
+}
+.activity-header img:hover {
+  opacity: 0.2;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.activity-header img {
+  transition: all 0.2s;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.activity-header {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  height: 80%;
+}
+.activity-footer .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+.activity-footer .right button:nth-child(1) {
+  margin-right: 5px;
+}
+.activity-footer .right button {
+  padding: 8px 10px;
+  font-size: 1rem;
+  font-size: 14px;
+  background-color: #333;
+  box-shadow: 2px 2px 20px #1111, -2px -2px 20px #1111;
+  transition: all 0.2s;
+  color: #333 !important;
+  background-color: transparent !important;
+  border: 1px solid #b1b1b1;
+}
+.activity-footer .right button:hover {
+  box-shadow: 2px 2px 5px #c7c7c7, -2px -2px 5px #c7c7c7 !important;
+}
+.activity-footer h5 {
+  margin: 0 !important;
+  font-weight: 300;
+  color: #222;
+}
+.activity-footer {
+  padding: 5px 10px;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  border-top: 1px solid #b1b1b1;
+  color: #fff;
+}
+.btn-add-basket {
+  background-color: #fff !important;
+  color: #333 !important;
+}
+@media (max-width: 600px) {
+  .activity-header {
+    height: 75%;
+  }
+  .activity {
+    margin-bottom: 2rem;
+  }
+  .activity-footer {
+    padding: 5px 10px;
+    height: 25%;
+    display: flex;
+    align-items: center;
+
+    color: #fff;
+  }
+  .activity {
+    height: 400px;
+  }
+  .activity-footer .right {
+    justify-items: center;
+    justify-content: space-evenly !important;
+    flex-direction: column;
+  }
+  .btn-add-basket {
+    margin-bottom: 5px !important;
+  }
+  .activity-footer .right button {
+    width: 100%;
+    /* margin: 0; */
+  }
+  .activity-footer .right button:nth-child(1) {
+    margin-right: 0;
+  }
+}

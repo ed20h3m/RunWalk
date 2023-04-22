@@ -1,0 +1,180 @@
+.session {
+  background-color: #333;
+  width: 100%;
+  border: 1px solid #888;
+  min-height: 315px;
+  max-height: 315px;
+  max-width: 450px;
+}
+.session .time-slots .time:hover {
+  transform: scale(1.05);
+}
+.session .time-slots .time h6 {
+  margin: 0;
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 0;
+}
+input[type="date"]::-webkit-datetime-edit {
+  display: none;
+}
+input[type="date"] {
+  padding: 5px;
+}
+.session .time-slots h6 {
+  margin: 0 !important;
+  text-align: center;
+  padding: 5px 10px;
+  border: 1px solid #777;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.session .selected-time {
+  color: #ccc !important;
+  background-color: #222 !important;
+}
+.session .times-lots-con {
+  min-height: 60%;
+  height: 188px;
+  color: #444;
+  background-color: #dbdbdb;
+  overflow: hidden;
+}
+.session .times-lots-con .center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  height: 188px;
+  width: 100%;
+}
+.session .times-lots-con .center-text h5 {
+  font-weight: 400;
+}
+.session .time-slots {
+  max-height: 60%;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.session header .header-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* width: 50%; */
+}
+.session header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.session footer {
+  justify-content: center;
+  border-top: 1px solid #ccc;
+}
+
+.session header .button,
+.session footer .button {
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  margin: 0 5px;
+  width: 25%;
+  padding: 5px;
+  transition: all 0.2s;
+}
+.session footer .btn-cancel {
+  background-color: #222;
+  color: #fff;
+}
+.session footer .btn-update {
+  font-weight: 400;
+  background-color: #ccc;
+  color: #333;
+}
+.session header .btn-delete:hover {
+  font-weight: 400;
+  background-color: rgb(255, 67, 67);
+  color: #fff;
+}
+.session header .btn-delete {
+  font-weight: 400;
+  width: 100px;
+  color: #fff;
+  background-color: rgb(255, 67, 67);
+}
+.session footer .btn-edit {
+  font-weight: 400;
+  background-color: #222;
+  color: #ccc;
+}
+.session footer .button:hover {
+  transform: scale(1.06);
+}
+.session footer .btn-edit:hover {
+  background-color: #ccc;
+  color: #333;
+}
+.session header,
+.session footer {
+  display: flex;
+  align-items: center;
+  height: 20%;
+  padding: 10px;
+  color: #ccc;
+  background-color: #333;
+}
+
+.session header h3 {
+  font-weight: 200;
+  margin: 0;
+}
+.session .main-part {
+  display: flex;
+  height: 60%;
+  padding: 1rem;
+  color: #ccc;
+}
+.session .main-part h5 {
+  font-size: 1.15rem;
+  font-weight: 200;
+}
+.session .main-part .left {
+  align-items: start;
+}
+.session .main-part .right {
+  align-items: start;
+}
+.session .main-part .left,
+.session .main-part .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+.input::-webkit-calendar-picker-indicator {
+  background-color: #333;
+  border-radius: 50%;
+}
+.input {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  border: none;
+  background-color: #333;
+  color: #ccc;
+}
+@media screen and (max-width: 1100px) and (min-width: 700px) {
+  .customer-home-page main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 700px) {
+  .session {
+    width: 100%;
+  }
+}

@@ -1,0 +1,199 @@
+.profile-page {
+  background-color: #222;
+  height: auto;
+  padding: 2rem 0;
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-page button {
+  font-weight: 200;
+}
+.profile-page .main {
+  border-radius: 2px;
+  height: auto;
+  width: 650px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 10px;
+}
+.input-item {
+  margin-top: 10px;
+  width: 70%;
+  transition: all 0.2s;
+  color: #333;
+}
+.input-item div input {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline: 0;
+  padding: 3px 5px;
+}
+input[disabled] {
+  background-color: #f3f3f3;
+}
+.input-item div {
+  display: flex;
+  flex-direction: column;
+}
+.input-item div label {
+  color: #888888;
+}
+.profile-page .main .update-btn {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+.profile-page .main .cancel-btn {
+  background-color: #fff !important;
+  color: #333 !important;
+  border: 1px solid #ccc !important;
+}
+.profile-page .main .edit-btn {
+  margin: 2rem 2px 0 2px;
+  padding: 4px 15px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.2s;
+}
+.profile-page .main .edit-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+.header-title {
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 1rem;
+  font-weight: 200;
+}
+.profile-page .membership-card {
+  width: 100%;
+  border-top: 1px solid #ccc;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-page .membership-card h3 {
+  margin: 2rem 0;
+  font-weight: 200;
+}
+.profile-page .membership-card .cards {
+  border: 1px solid #ccc;
+  margin: 0 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 5px;
+}
+.profile-page .membership-card .cards > div {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.profile-page .membership-card .cards div h5 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.profile-page .membership-card .cards .monthly {
+  margin-right: 2px;
+}
+.profile-page .membership-card .cards .yearly {
+  margin-left: 2px;
+}
+.profile-page .membership-card .cards .yearly .title h3,
+.profile-page .membership-card .cards .monthly .title h3 {
+  margin: 10px 0 !important;
+}
+.profile-page .membership-card .cards .yearly .title,
+.profile-page .membership-card .cards .monthly .title {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.profile-page .membership-card .cards > div .sub-con {
+  display: flex;
+  justify-content: center;
+}
+.profile-page .membership-card .cards > div .sub-con .sub-btn {
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  padding: 3px 7px;
+  border-radius: 3px;
+  background-color: #5d5d5d;
+  border-top: 1px solid #ccc;
+  color: #fff;
+}
+.profile-page .btn-con {
+  width: 80%;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+}
+.profile-page .btn-con .sub-btn {
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  padding: 3px 7px;
+  border-radius: 3px;
+  color: rgb(255, 85, 85);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+  font-weight: 400;
+}
+.profile-page .btn-con h5,
+h6 {
+  font-weight: 400;
+}
+.profile-page .btn-con {
+  margin-top: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+.profile-page .btn-con .sub-btn:hover {
+  background-color: rgb(255, 85, 85);
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .profile-page .main {
+    width: 95%;
+  }
+  .profile-page .btn-con {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .input-item {
+    width: 90%;
+  }
+  .profile-page .btn-con .sub-btn {
+    margin: 10px 0;
+  }
+  .profile-page .membership-card .cards {
+    flex-direction: column;
+  }
+  .profile-page .membership-card .cards > div {
+    margin: 5px 0 !important;
+  }
+}

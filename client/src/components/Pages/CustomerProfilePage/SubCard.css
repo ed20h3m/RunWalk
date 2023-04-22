@@ -1,0 +1,36 @@
+.sub-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.sub-card h5 {
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+.sub-card-email {
+  margin: 10px 0;
+  /* margin-right: 5px; */
+}
+.sub-card-plans {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 1rem;
+}
+.sub-card .sub-btn {
+  margin-top: 1rem;
+  padding: 2px 5px;
+  outline: none;
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+}
+.sub-card .sub-btn:hover {
+  background-color: rgb(96, 215, 96);
+}
+@media (max-width: 600px) {
+  .sub-card {
+    width: 100%;
+  }
+}

@@ -1,0 +1,41 @@
+
+.activities-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
+    
+}
+
+.click-button{   
+    padding: 10px 20px;
+    margin-top: 0.5rem;
+    width: 7rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    background-color: #ffc033;
+    color: #323232;
+    border: none;
+}
+
+
+.buttons-container{
+    margin-left:100px;
+    margin-right: 100px;
+    display:flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    padding-bottom: 50px;
+    font-size: small;
+} 
+
+.membership{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  

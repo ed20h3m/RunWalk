@@ -1,0 +1,13 @@
+.war {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 15;
+  position: absolute;
+}
+@media screen and (max-width: 700px) {
+  .info {
+    width: 95% !important;
+  }
+}
