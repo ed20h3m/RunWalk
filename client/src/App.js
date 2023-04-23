@@ -62,7 +62,7 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       {showOverlay && <Overlay />}
       {!localStorage.ManagerToken && <Navbar />}
       <Basket />
