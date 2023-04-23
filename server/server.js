@@ -76,6 +76,4 @@ server.use("/info", require("./routes/Info"));
 // Get sports centre info
 server.use("/stats", require("./routes/Stats"));
 
-//
-
 module.exports = server;
