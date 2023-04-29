@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 //import sidebar component
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Sidebar from "../../sidebar/Sidebar";
 import "./activity.css";
 import ActivityTable from "../../../common/customTable/ActivityTable";
 const Activity = () => {

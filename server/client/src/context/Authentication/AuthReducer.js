@@ -6,7 +6,7 @@ import {
   SET_EMPLOYEES,
   SET_EMPLOYEE,
   SET_EMPLOYEE_ID,
-} from ".././types";
+} from "../types";
 const AuthReducer = (state, action) => {
   switch (action.type) {
     default:

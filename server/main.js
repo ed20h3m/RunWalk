@@ -3,7 +3,7 @@ const path = require("path");
 require("dotenv").config();
 const express = require("express");
 
-app.use(express.static("../client/build"));
+app.use(express.static("./client/build"));
 
 // Set port number
 const PORT = process.env.PORT || 5000;

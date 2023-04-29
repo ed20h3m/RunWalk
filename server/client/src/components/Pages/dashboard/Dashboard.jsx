@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 //import sidebar component
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Sidebar from "../../sidebar/Sidebar";
 import Barchart from "../../../common/barchart/Barchart";
 import Piechart from "../../../common/barchart/Piechart";
 import { FacilitiesContext } from "../../../context/Facilities/FacilitiesState";
