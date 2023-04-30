@@ -83,7 +83,7 @@ const AdminHomepage = () => {
             <button
               className="click-button"
               onClick={() => {
-                window.location.href = "/employee/booking";
+                window.location.href = "/employee/home/booking";
               }}
             >
               Book Session

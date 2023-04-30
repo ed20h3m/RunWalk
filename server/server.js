@@ -14,7 +14,6 @@ DatabaseString();
 // Customer CRUD and LOGIN
 server.use("/customers", require("./routes/Customers"));
 server.use("/customer/login", require("./routes/CustomerLogin"));
-//
 // Session CRUD
 server.use("/sessions", require("./routes/Sessions"));
 
