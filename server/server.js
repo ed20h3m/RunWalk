@@ -71,7 +71,6 @@ server.use("/subscription", require("./routes/stripeSub"));
 // Create a transaction
 server.use("/transactions", require("./routes/Transactions"));
 
-//
 // Get sports centre info
 server.use("/info", require("./routes/Info"));
 
