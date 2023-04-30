@@ -1,6 +1,7 @@
 require("dotenv").config();
 const path = require("path");
 const app = require("./server");
+const express = require("express");
 
 // Set port number
 app.use(express.static(path.join(__dirname, "build")));
