@@ -294,7 +294,6 @@ const GetCapacities = async (req, res) => {
       const isValid =
         date.getFullYear() >= currentDate.getFullYear() &&
         date.getMonth() >= currentDate.getMonth() &&
-        date.getDate() >= currentDate.getDate() &&
         Number(date.toISOString().slice(11, 13)) >= 8 &&
         Number(date.toISOString().slice(11, 13)) <= 22;
       if (!isValid) {
