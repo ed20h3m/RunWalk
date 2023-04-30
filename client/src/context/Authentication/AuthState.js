@@ -337,6 +337,7 @@ export const AuthState = (props) => {
       SetEmployeeId();
     } catch ({ response }) {
       // if error alert customer
+      //
       SetAlert(response.data.message);
     }
     ToggleLoading(false);
