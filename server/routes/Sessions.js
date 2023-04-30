@@ -13,7 +13,6 @@
 // Import required packages
 const express = require("express");
 const router = express.Router();
-const { SendEmail } = require("../Email");
 const Session = require("../Models/Session");
 const Customer = require("../Models/Customer");
 router.use(express.json());
@@ -22,7 +21,6 @@ const EmployeeAuthentication = require("../Middleware/EmployeeAuthentication");
 const { SessionSchema, SessionSchemaPut } = require("../Schemas/SessionSchema");
 const { EmailSchema } = require("../Schemas/AttSchema");
 const { PoolSessions } = require("./SwimmingPool");
-const Pool = require("../Models/SwimmingPool");
 const { StudioSessions } = require("./Studio");
 const { FitnessRoomSessions } = require("./FitnessRoom");
 const { SquashCourt1Sessions } = require("./SquashCourt1");
@@ -88,7 +86,6 @@ const CreateSession = async (req, res) => {
 };
 
 const EditSession = async (req, res) => {
-  console.log("INSIDE BACKEND");
   // Check if there is a customer object
   const { session } = req.body;
   if (!session)
@@ -101,13 +98,11 @@ const EditSession = async (req, res) => {
 
   // Return if there is a syntax error
   if (error) {
-    console.log("INSIDE VALIDATION ERROR");
     return res.status(400).json({
       message: error.details[0].message.replace(/"/g, ""),
       type: "error",
     });
   }
-  console.log("HERE");
   try {
     req.body.Date = req.body.session.Date;
     req.body.Facility = req.body.session.Facility;
@@ -128,7 +123,6 @@ const EditSession = async (req, res) => {
     // Return to customer with success message
     res.status(200).json({ message: "Session Updated", type: "success" });
   } catch (error) {
-    console.log("HERE 2");
     // Return with error message if there is server error
     res.status(500).json({ message: error.message, type: "error" });
   }
@@ -253,14 +247,6 @@ const DeleteSession = async (req, res) => {
 
     // Return success response
     res.status(200).json({ message: "Session Canceled", type: "success" });
-
-    // Create email object
-    const content = {
-      subject: "Session Cancelation",
-      description: "Your Session was canceled",
-    };
-    // Send email to customer
-    SendEmail(Email, content);
   } catch (error) {
     // Return error response
     res.status(500).json({ message: "Session Not Found", type: "Error" });
@@ -371,56 +357,57 @@ const GetCapacities = async (req, res) => {
     // return error if date was invalid
     return { message: "invalid time slot", type: "error" };
   } catch (error) {
+    console.log(error.message);
     return { message: error.message, type: "error" };
   }
 };
 
-const CompareTimes = async (req) => {
-  // Get Date and Facility parameters
-  const BodyDate = req.body.Date || req.header("time");
-  const BodyFacility = req.body.Facility || req.header("Facility");
-  console.log(BodyDate, BodyFacility);
-  // return;
-  if (BodyDate.length >= 15) {
-    // Find all sessions at that time slot
-    let session = await Session.find({
-      Date: req.body.Date,
-      Facility: req.body.Facility,
-      Status: "pending",
-    }).select("_id");
-    // convert to date and time object
-    const d = new Date(req.body.Date);
-    const now = new Date();
-    if (now > d)
-      for (let i = 0; i < session.length; i++)
-        await Session.findByIdAndUpdate(session[i]._id, { Status: "passed" });
+// const CompareTimes = async (req) => {
+//   // Get Date and Facility parameters
+//   const BodyDate = req.body.Date || req.header("time");
+//   const BodyFacility = req.body.Facility || req.header("Facility");
+//   console.log(BodyDate, BodyFacility);
+//   // return;
+//   if (BodyDate.length >= 15) {
+//     // Find all sessions at that time slot
+//     let session = await Session.find({
+//       Date: req.body.Date,
+//       Facility: req.body.Facility,
+//       Status: "pending",
+//     }).select("_id");
+//     // convert to date and time object
+//     const d = new Date(req.body.Date);
+//     const now = new Date();
+//     if (now > d)
+//       for (let i = 0; i < session.length; i++)
+//         await Session.findByIdAndUpdate(session[i]._id, { Status: "passed" });
 
-    // if only the date is provided
-  } else if (req.body.Date.length > 9 && req.body.Date.length < 15) {
-    // Loop around the time slots during the day
-    for (let j = 8; j < 21; j++) {
-      // Format time slot based on index
-      let date = req.body.Date;
-      date = date + ` ${j}:00`;
-      // find the capacity on each time slot
-      let sessions = await Session.find({
-        Date: date,
-        Facility: req.body.Facility,
-        Status: "pending",
-      }).select("_id");
-      const now = new Date();
-      const d = new Date(date);
-      // compare date and times to see if the sessions is passed its time
-      if (now > d) {
-        for (let i = 0; i < sessions.length; i++) {
-          await Session.findByIdAndUpdate(sessions[i]._id, {
-            Status: "passed",
-          });
-        }
-      }
-    }
-  }
-};
+//     // if only the date is provided
+//   } else if (req.body.Date.length > 9 && req.body.Date.length < 15) {
+//     // Loop around the time slots during the day
+//     for (let j = 8; j < 21; j++) {
+//       // Format time slot based on index
+//       let date = req.body.Date;
+//       date = date + ` ${j}:00`;
+//       // find the capacity on each time slot
+//       let sessions = await Session.find({
+//         Date: date,
+//         Facility: req.body.Facility,
+//         Status: "pending",
+//       }).select("_id");
+//       const now = new Date();
+//       const d = new Date(date);
+//       // compare date and times to see if the sessions is passed its time
+//       if (now > d) {
+//         for (let i = 0; i < sessions.length; i++) {
+//           await Session.findByIdAndUpdate(sessions[i]._id, {
+//             Status: "passed",
+//           });
+//         }
+//       }
+//     }
+//   }
+// };
 
 const GetCapacitiesRoute = async (req, res) => {
   const data = await GetCapacities(req, res);

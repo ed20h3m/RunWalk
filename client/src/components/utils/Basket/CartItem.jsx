@@ -8,6 +8,19 @@ const CartItem = ({ item, id }) => {
   const { customer } = useContext(AuthContext);
   const remove = () => {
     RemoveCartItem(id);
+    const storedData = localStorage.getItem("cart");
+    let data = [];
+
+    if (storedData) {
+      // Parse the stored data as JSON.
+      data = JSON.parse(storedData);
+    }
+
+    // Find the item to remove based on its id.
+    data.splice(id, 1);
+
+    // Store the updated data back in localStorage.
+    localStorage.setItem("cart", JSON.stringify(data));
   };
   return (
     <div className="cart-item">

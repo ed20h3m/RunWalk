@@ -62,7 +62,7 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       {showOverlay && <Overlay />}
       {!localStorage.ManagerToken && <Navbar />}
       <Basket />
@@ -89,7 +89,7 @@ const App = () => {
           <Route path="/customer/activity" element={<CustomerActivityPage />} />
         )}
         {localStorage.ManagerToken && (
-          <Route path="/manager/Dashboard" element={<Dashboard />} />
+          <Route path="/manager/dashboard" element={<Dashboard />} />
         )}
         {localStorage.ManagerToken && (
           <Route path="/manager/staff" element={<Staff />} />
@@ -98,7 +98,7 @@ const App = () => {
           <Route path="/manager/activities" element={<Activity />} />
         )}
         {localStorage.ManagerToken && (
-          <Route path="/manage/membership" element={<Membership />} />
+          <Route path="/manager/membership" element={<Membership />} />
         )}
         {localStorage.EmployeeToken && (
           <Route path="/employee/booking" element={<Booking />} />

@@ -12,21 +12,24 @@ import CustomButton from "../components/CustomButton";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
+  //declare values null
   const [prevale, setVale] = useState({
     isMember: null,
     Date1: null,
     Date2: null,
   });
+  //change dates
 
   const handleChangeDate = (name, date) => {
     setVale({ ...prevale, [name]: date });
   };
+  //imoport functions for apis call
   const {
     TotalNumberOfMembers,
     TotalNumberOfNonMembers,
     GetNumberOfCustomers,
   } = useContext(FacilitiesContext);
-
+  // saveData function calss on click save button
   const saveData = async () => {
     await GetNumberOfCustomers(
       convertDate(prevale.Date1.toDate()),
@@ -39,6 +42,7 @@ const PieChart = () => {
       (prevale.isMember = true)
     );
   };
+  //pie chart labels and dataset declared
   const data = {
     labels: ["Members", "Non Members"],
     datasets: [

@@ -30,16 +30,11 @@ ChartJS.register(
   Legend
 );
 
-function VerticalBarChart(props) {
+function ActivityBarchart(props) {
   // objects destructuring: picking specific properties from the object
-  const { data, options, prevale, setVale, storeData, title } = props;
-  //change profit types
+  const { data, options, title, prevale, setVale, storeData } = props;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setVale({ ...prevale, [name]: value });
-  }; //change dates
-
+  //change dates
   const handleChangeDate = (name, date) => {
     setVale({ ...prevale, [name]: date });
   };
@@ -47,10 +42,10 @@ function VerticalBarChart(props) {
     <>
       {" "}
       <Grid container spacing={2} style={{ margin: "0px", with: "100%" }}>
-        {" "}
-        <Grid item lg={2} md={2} sm={12} xs={12}>
+        <Grid item lg={4} md={4} sm={12} xs={12}>
           <h2 className="chart-title"> {title}</h2>{" "}
         </Grid>
+
         <Grid item lg={3} md={3} sm={12} xs={12}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
@@ -77,30 +72,8 @@ function VerticalBarChart(props) {
             />
           </LocalizationProvider>
         </Grid>
-        <Grid item lg={3} md={3} sm={12} xs={12}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Profit type</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={prevale?.profit}
-              name="profit"
-              label="Profit type"
-              onChange={handleChange}
-            >
-              <MenuItem value={"facility"}>Profit per facility</MenuItem>
-              <MenuItem value={"activity"}>Profit per activity</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid
-          item
-          lg={11}
-          md={11}
-          sm={12}
-          xs={12}
-          style={{ textAlign: "right" }}
-        >
+
+        <Grid item lg={2} md={2} sm={12} xs={12}>
           <CustomButton text={"Save"} onClick={storeData} />
         </Grid>
       </Grid>
@@ -110,4 +83,4 @@ function VerticalBarChart(props) {
     </>
   );
 }
-export default VerticalBarChart;
+export default ActivityBarchart;

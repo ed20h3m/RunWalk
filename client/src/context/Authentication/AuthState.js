@@ -76,7 +76,7 @@ export const AuthState = (props) => {
       localStorage.setItem("ManagerId", token.id);
       // set manager id
       SetManagerId();
-      window.location.href = "/manager/dashboard";
+      window.location.href = "/dashboard";
     } catch ({ response }) {
       SetAlert(response.data.message);
     }
@@ -333,7 +333,7 @@ export const AuthState = (props) => {
       // Add id to local storage
       localStorage.setItem("EmployeeId", token.id);
       SetAlert("Logged in", res.data.type);
-      window.location.href = "/employee/home";
+      window.location.href = "/employee";
       SetEmployeeId();
     } catch ({ response }) {
       // if error alert customer

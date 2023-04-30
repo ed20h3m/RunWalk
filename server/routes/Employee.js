@@ -3,7 +3,6 @@
 const express = require("express");
 const router = express.Router();
 router.use(express.json());
-const { SendEmail } = require("../Email");
 const Employee = require("../Models/Employee");
 const Customer = require("../Models/Customer");
 const {
@@ -52,20 +51,6 @@ router.post("/", ManagerAuthentication, async (req, res) => {
       return res
         .status(400)
         .json({ message: "Employee wasn't added", type: "error" });
-
-    const content1 = {
-      subject: "New Employee Added",
-      description: `Hello, Employee added successfully`,
-    };
-    // Send Email to manager
-    // SendEmail(Email, content1);
-
-    const content2 = {
-      subject: "Added as an Employee",
-      description: `Hello You are now an employee`,
-    };
-    // Send Email to manager
-    // SendEmail(employee.Email, content2);
     res.status(200).json({ message: "Employee Added", type: "success" });
   } catch (error) {
     // if server error return to user
@@ -94,17 +79,7 @@ router.put("/", ManagerAuthentication, async (req, res) => {
     });
   try {
     // Updated Employee account
-    const employee = await Employee.findByIdAndUpdate(update._id, update);
-    const description = update.isSuspended
-      ? "Your Account was suspended"
-      : "You're no longer suspended";
-    const content = {
-      subject: "Account suspension",
-      description,
-    };
-    // Send Email to suspended employee
-    // SendEmail(employee.Email, content);
-    // Return success response to manager
+    await Employee.findByIdAndUpdate(update._id, update);
     res.status(200).json({ message: "Update complete", type: "success" });
   } catch (error) {
     // return if there are server errors
@@ -129,7 +104,6 @@ router.get("/", ManagerAuthentication, async (req, res) => {
 router.get("/find-one", ManagerAuthentication, async (req, res) => {
   // Destruct _id from request object
   const _id = req.header("_id");
-  console.log(_id);
   // if no id is provided: => return error message
   if (!_id)
     return res
@@ -177,16 +151,9 @@ router.put("/forgot-password", async (req, res) => {
   const Password = await bcrypt.hash(update.Password, salt);
 
   // Update the database with the new password
-  const employeeUpdate = await Employee.findByIdAndUpdate(update._id, {
+  await Employee.findByIdAndUpdate(update._id, {
     Password,
   });
-
-  // Send Email to user
-  const content = {
-    subject: "Password Change",
-    description: `Hello ${update.FirstName}, this email is to inform you that your password has been changed 🌎`,
-  };
-  // SendEmail(employeeUpdate.Email, content);
 
   res.status(200).json({ message: "Password Changed", type: "success" });
 });
@@ -269,7 +236,6 @@ router.put("/edit-customer", EmployeeAuthentication, async (req, res) => {
           // Send Email to user
           content.description =
             "This is an email to inform your account email is changed 🌎";
-          // SendEmail(update.Email, content);
         }
       }
       // Finally update database

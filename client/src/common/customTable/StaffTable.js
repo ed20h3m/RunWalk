@@ -7,9 +7,8 @@ import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOu
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import Dialog from "./Dialog";
 import CustomAlert from "../components/CustomAlert";
-import { AlertContext } from "../../context/Alert/Alert";
-import Loading from "../../components/utils/Loading";
 const StaffTable = () => {
+  // function for api calls
   const {
     Employees,
     GetEmployees,
@@ -17,15 +16,12 @@ const StaffTable = () => {
     SetEmployeeId,
     CreateEmployee,
   } = useContext(AuthContext);
-  useEffect(() => {
-    GetEmployees();
-  }, []);
+  // declare values
   const initialData = {
     FirstName: "",
     LastName: "",
     Email: "",
   };
-  const { isLoading } = useContext(AlertContext);
 
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(initialData);
@@ -34,11 +30,17 @@ const StaffTable = () => {
   const [alert, setAlert] = useState(false);
   const [alertRevert, setAlertRevert] = useState(false);
 
+  // render component when open staff page
+  useEffect(() => {
+    GetEmployees();
+  }, []);
+  // create new employee record
   const handleSubmit = async () => {
     await CreateEmployee(selectedUser);
     setShowEditModal(false);
     await GetEmployees();
   };
+  // update employee record
   const handleUpdate = async () => {
     SetEmployeeId();
 
@@ -46,29 +48,30 @@ const StaffTable = () => {
     setShowEditModal(false);
     await GetEmployees();
   };
-
+  // edit employee record
   const handleShowEditModal = (user) => {
     setStatus(user ? "edit" : "add");
     setSelectedUser(user);
     setShowEditModal(true);
   };
-
+  // delete employee alert dialog show
   const handleShowDeleteModal = (user) => {
     setAlert(true);
     setSelectedUser(user);
   };
+  // revert back deleted employee alert dialog show
   const handleShowRevertModal = (user) => {
     setAlertRevert(true);
     setSelectedUser(user);
   };
-
+  // delete selected employee
   const handleDelete = async () => {
     selectedUser.isSuspended = true;
     setAlert(false);
     await PutEmployee(selectedUser);
     await GetEmployees();
   };
-
+  // revert back deleted employee
   const handleDeleteDone = async () => {
     selectedUser.isSuspended = false;
     setAlertRevert(false);
@@ -76,9 +79,7 @@ const StaffTable = () => {
     await GetEmployees();
   };
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     <>
       <AddCircleOutlineOutlinedIcon
         style={{
@@ -102,13 +103,13 @@ const StaffTable = () => {
           </tr>
         </thead>
         <tbody>
-          {Employees.map((user, index) => (
+          {Employees?.map((user, index) => (
             <tr key={user.id}>
               <td>{index + 1}</td>
-              <td>{user.FirstName}</td>
-              <td>{user.LastName}</td>
-              <td>{user.Email}</td>
-              <td>{user.isSuspended ? "Yes" : "No"}</td>
+              <td>{user?.FirstName}</td>
+              <td>{user?.LastName}</td>
+              <td>{user?.Email}</td>
+              <td>{user?.isSuspended ? "Yes" : "No"}</td>
 
               <td>
                 <EditIcon onClick={() => handleShowEditModal(user)} />
@@ -152,7 +153,7 @@ const StaffTable = () => {
         setOpen={setAlertRevert}
         deleteData={handleDeleteDone}
         heading="Confirm Activation"
-        text="Are you sure you want to activate this user? This action cannot be undone and backup will be deleted."
+        text="Are you sure you want to Activate this user? This action cannot be undone and backup will be deleted."
       />
     </>
   );

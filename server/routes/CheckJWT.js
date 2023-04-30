@@ -5,7 +5,6 @@ const JWT = require("jsonwebtoken");
 
 router.post("/", (req, res) => {
   // If there is no token return error
-  //
   if (!req.body.Token || !req.body.Person)
     return res.json({
       message: "Missing Details",

@@ -1,30 +1,33 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Pagination, Button, Modal, Form } from "react-bootstrap";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import ActivityDialog from "./ActivityDialog";
 import CustomAlert from "../components/CustomAlert";
 import { FacilitiesContext } from "../../context/Facilities/FacilitiesState";
-import { AlertContext } from "../../context/Alert/Alert";
-import Loading from "../../components/utils/Loading";
 
 const ActivityTable = () => {
+  // function to handle api calls
   const { GetAllFacilities, PutFacility, AllFacilities } =
     useContext(FacilitiesContext);
-  const { isLoading } = useContext(AlertContext);
-  useEffect(() => {
-    GetAllFacilities();
-  }, []);
+
   const initialData = {
     FirstName: "",
     LastName: "",
     Email: "",
   };
 
+  // usestate to declare properties
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(initialData);
   const [alertLoadDate, setalertLoadDate] = useState(false);
   const [alert, setAlert] = useState(false);
 
+  //render component when open the facilities page
+  useEffect(() => {
+    GetAllFacilities();
+  }, []);
   const handleSubmit = async () => {
     // SetEmployeeId();
 
@@ -39,21 +42,17 @@ const ActivityTable = () => {
     setShowEditModal(false);
     await GetAllFacilities();
   };
+  // open the edit modal
   const handleShowEditModal = (user) => {
     setSelectedUser(user);
     setShowEditModal(true);
   };
-
-  const handleShowDeleteModal = (user) => {
-    setAlert(true);
-    setSelectedUser(user);
-  };
-
+  // delete the selected user
   const handleDelete = (user) => {
     setAlert(false);
     setSelectedUser(user);
   };
-
+  //destructure all the facilities and store them in the array
   const dataArray = [];
 
   for (let i = 0; i < AllFacilities.length; i++) {
@@ -77,9 +76,7 @@ const ActivityTable = () => {
       dataArray.push(newData);
     }
   }
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     <>
       <Table striped bordered hover>
         <thead>
@@ -98,10 +95,10 @@ const ActivityTable = () => {
           {dataArray?.map((user, index) => (
             <tr key={user.id}>
               <td>{index + 1}</td>
-              <td>{user.Activity}</td>
-              <td>{user.Facility}</td>
-              <td>{user.Duration}</td>
-              <td>{user.Price}</td>
+              <td>{user?.Activity}</td>
+              <td>{user?.Facility}</td>
+              <td>{user?.Duration}</td>
+              <td>{user?.Price}</td>
               <td>{user?.Capacity}</td>
 
               <td>
@@ -119,7 +116,7 @@ const ActivityTable = () => {
         setData={setSelectedUser}
         storeData={selectedUser ? handleUpdate : handleSubmit}
         alertLoadDate={alertLoadDate}
-        title={selectedUser ? "Edit activity data" : "Add activity data"}
+        title={selectedUser ? "Edit facilities data" : "Add facilities data"}
       />
       <CustomAlert
         open={alert}

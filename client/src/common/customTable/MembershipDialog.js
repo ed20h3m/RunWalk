@@ -5,16 +5,15 @@ import CustomDialog from "../components/CustomDialog";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 const MembershipDialog = (props) => {
-  // import labels from the server
+  // objects destructuring: picking specific properties from the object
   const { open, setOpen, data, setData, title, storeData, alertLoadDate } =
     props;
-
+  // change the values
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setData({ ...data, [name]: value });
   };
-  console.log(data);
   return (
     <CustomDialog
       open={open}

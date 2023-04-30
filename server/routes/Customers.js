@@ -202,10 +202,10 @@ router.put("/change-password", CustomerAuthentication, async (req, res) => {
   });
 
   // Send Email to user
-  const content = {
-    subject: "Password Change",
-    description: `Hello ${customerUpdate.FirstName}, this email is to inform you that your password has been changed 🌎`,
-  };
+  // const content = {
+  //   subject: "Password Change",
+  //   description: `Hello ${customerUpdate.FirstName}, this email is to inform you that your password has been changed 🌎`,
+  // };
   // SendEmail(customerUpdate.Email, content);
 
   res.status(200).json({ message: "Password Changed", type: "success" });

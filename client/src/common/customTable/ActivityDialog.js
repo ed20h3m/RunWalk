@@ -5,10 +5,10 @@ import CustomDialog from "../components/CustomDialog";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 const ActivityDialog = (props) => {
-  // import labels from the server
+  // objects destructuring: picking specific properties from the object
   const { open, setOpen, data, setData, title, storeData, alertLoadDate } =
     props;
-
+  // changes dialog value
   const handleChange = (e) => {
     const { name, value } = e.target;
 

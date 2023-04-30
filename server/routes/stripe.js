@@ -36,8 +36,8 @@ const MakePayment = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items,
       mode: "payment",
-      success_url: `${process.env.CLIETN_URL}/success`,
-      cancel_url: `${process.env.CLIETN_URL}/cancel`,
+      success_url: "http://localhost:3000/success",
+      cancel_url: "http://localhost:3000/cancel",
     });
     // SendEmail(req.body.items[0].Email, req.body.items);
     res.status(200).json({ url: session.url, type: "success" });

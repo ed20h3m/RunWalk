@@ -26,16 +26,16 @@ const Basket = () => {
   }
   if (counter < 3) isDiscount = false;
   else isDiscount = true;
-  if (isDiscount && Cart.length >= 3) {
-    total = parseFloat(
-      (
-        Cart.reduce((a, b) => a + b.Price, 0) *
-        (1 - info.Discount / 100)
-      ).toFixed(2)
-    );
-  } else {
-    total = parseFloat(Cart.reduce((a, b) => a + b.Price, 0).toFixed(2));
-  }
+
+  total =
+    Cart.length >= 3 && isDiscount
+      ? parseFloat(
+          Cart.reduce((a, b) => a + parseFloat(b.Price), 0).toFixed(2)
+        ) *
+        (1 - info?.Discount / 100)
+      : parseFloat(
+          Cart.reduce((a, b) => a + parseFloat(b.Price), 0).toFixed(2)
+        );
   return (
     <div className="basket">
       <div className="header">
@@ -48,9 +48,9 @@ const Basket = () => {
       </div>
       {customer && (
         <div className="footer">
-          {!customer.isMember && <h3>Total: £{total}</h3>}
+          {!customer.isMember && <h3>Total: £ {total}</h3>}
           {!customer.isMember && Cart.length > 2 && (
-            <h6>with {info.Discount}%</h6>
+            <h6>with {info?.Discount}%</h6>
           )}
           {!customer.isMember ? (
             <button

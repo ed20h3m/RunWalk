@@ -6,10 +6,9 @@ import { FacilitiesContext } from "../../context/Facilities/FacilitiesState";
 import MembershipDialog from "./MembershipDialog";
 
 const MembershipTable = () => {
+  // fucntions for api calls
   const { GetInfo, PutInfo, Info } = useContext(FacilitiesContext);
-  useEffect(() => {
-    GetInfo();
-  }, []);
+  //declare values
   const initialData = {
     FirstName: "",
     LastName: "",
@@ -18,6 +17,12 @@ const MembershipTable = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(initialData);
   const [alertLoadDate, setalertLoadDate] = useState(false);
+
+  // render comoponet when open membership page
+  useEffect(() => {
+    GetInfo();
+  }, []);
+  // update function
   const handleUpdate = async () => {
     // SetEmployeeId();
 
@@ -25,7 +30,7 @@ const MembershipTable = () => {
     setShowEditModal(false);
     GetInfo();
   };
-
+  // oppen dialog with selected user values
   const handleShowEditModal = (user) => {
     setSelectedUser(user);
     setShowEditModal(true);
@@ -40,15 +45,15 @@ const MembershipTable = () => {
             <th>Annual Price</th>
             <th>Monthly Price</th>
             <th>Discount</th>
-            <th>Action</th>
+            <th>Activity</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>{1}</td>
-            <td>{Info.AnnualPrice}</td>
-            <td>{Info.MonthlyPrice}</td>
-            <td>{Info.Discount}</td>
+            <td>{Info?.AnnualPrice}</td>
+            <td>{Info?.MonthlyPrice}</td>
+            <td>{Info?.Discount}</td>
             <td>
               <EditIcon onClick={() => handleShowEditModal(Info)} />
             </td>

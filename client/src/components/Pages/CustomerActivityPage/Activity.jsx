@@ -10,7 +10,6 @@ const Activity = ({ activity, setForm, setSession }) => {
   const { ToggleOverlay, ToggleBookForm, isLoading } = useContext(AlertContext);
   const { customer } = useContext(AuthContext);
   const { AddCartItem, ToggleIsBook, Capacities } = useContext(SessionContext);
-
   const onClick = (e) => {
     while (Capacities.length > 0) {
       Capacities.pop();

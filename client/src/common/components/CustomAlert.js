@@ -25,7 +25,6 @@ const CustomAlert = ({
    * text: body of the dialog box
    * heading: heading of the dialog box
    */
-
   const handleClose = () => {
     setOpen(false);
   };

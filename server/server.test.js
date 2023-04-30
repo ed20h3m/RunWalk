@@ -83,8 +83,8 @@ describe(" ** CUSTOMER ACCOUNT **", () => {
         .put("/customers")
         .send({
           update: {
-            _id: "63ea20b250db87189631a7e3",
-            Email: "hm.mousavi.02@gmail.com",
+            _id: "6425a7ea41e835e90b066119",
+            Email: "h@gmail.com",
           },
         })
         .set({ Token: CustomerToken });
@@ -145,7 +145,7 @@ describe(" ** CUSTOMER ACCOUNT **", () => {
         .put("/customers/change-password")
         .send({
           customer: {
-            _id: "63e66a4c14886ffc95b9fb53",
+            _id: "6425a7ea41e835e90b066119",
             Password: "123456789",
           },
         })
@@ -153,13 +153,13 @@ describe(" ** CUSTOMER ACCOUNT **", () => {
       expect(res.statusCode).toBe(200);
       expect(res.body.type).toEqual("success");
     });
-    it("Should Change Password to: 12345678", async () => {
+    it("Should Change Password to: Hesam1376!", async () => {
       const res = await supertest(app)
         .put("/customers/change-password")
         .send({
           customer: {
-            _id: "63e66a4c14886ffc95b9fb53",
-            Password: "12345678",
+            _id: "6425a7ea41e835e90b066119",
+            Password: "Hesam1376!",
           },
         })
         .set({ Token: CustomerToken });
@@ -197,8 +197,8 @@ describe(" ** CUSTOMER ACCOUNT **", () => {
     });
     it("Should Log the customer in", async () => {
       const res = await supertest(app).post("/customer/login").send({
-        Email: "v3sk@yahoo.com",
-        Password: "12345678",
+        Email: "hm.mousavi.02@gmail.com",
+        Password: "Hesam1376!",
       });
       expect(res.statusCode).toBe(200);
       expect(res.body.Token).toBeDefined();
@@ -281,8 +281,8 @@ describe(" ** CUSTOMER / EMPLOYEE SESSIONS ** ", () => {
           session: {
             _id: "63f14b4a87017ebc9441b1b3",
             // Email: "hm.mousavi.02@gmail.com",
-            Facility: "Amend",
-            Date: "2023-01-Amend",
+            Facility: "studio",
+            Date: "2023-05-09",
           },
         })
         .set({ Token: CustomerToken });
@@ -296,40 +296,40 @@ describe(" ** CUSTOMER / EMPLOYEE SESSIONS ** ", () => {
           session: {
             _id: "3f14b4a87017ebc9441b1b3",
             Email: "hm.mousavi.02@gmail.com",
-            Facility: "Amend",
-            Date: "2023-01-Amend",
+            Facility: "studio",
+            Date: "2023-05-08",
           },
         })
         .set({ Token: CustomerToken });
       expect(res.statusCode).toBe(500);
       expect(res.body.type.toLowerCase()).toEqual("error");
     });
-    it("Should update Session: 9:00 => 8:00", async () => {
+    it("Should update Session: => 8:00", async () => {
       const res = await supertest(app)
         .put("/sessions/customer")
         .send({
           session: {
-            _id: "63fa2804de5459a914660e6b",
+            _id: "6425bc50c89a2caeccbaa71b",
             Email: "hm.mousavi.02@gmail.com",
             Facility: "swimming pool",
             Activity: "general use",
-            Date: "2023-03-01 8:00",
+            Date: "2023-05-08 12:00",
           },
         })
         .set({ Token: CustomerToken });
       expect(res.statusCode).toBe(200);
       expect(res.body.type.toLowerCase()).toEqual("success");
     });
-    it("Should update Session: 8:00 => 9:00", async () => {
+    it("Should update Session: 17:00", async () => {
       const res = await supertest(app)
         .put("/sessions/customer")
         .send({
           session: {
-            _id: "63fa2804de5459a914660e6b",
+            _id: "6425bc50c89a2caeccbaa71b",
             Email: "hm.mousavi.02@gmail.com",
             Facility: "swimming pool",
             Activity: "general use",
-            Date: "2023-03-01 9:00",
+            Date: "2023-05-08 9:00",
           },
         })
         .set({ Token: CustomerToken });
@@ -366,12 +366,10 @@ describe(" ** CUSTOMER / EMPLOYEE SESSIONS ** ", () => {
     });
     it("Cancel session", async () => {
       const res = await supertest(app)
-        .put("/sessions/customer")
+        .delete("/sessions/customer")
         .send({
-          session: {
-            Email: "hm.mousavi.02@gmail.com",
-            _id: "63fa2804de5459a914660e6b",
-          },
+          Email: "hm.mousavi.02@gmail.com",
+          _id: "6425bc50c89a2caeccbaa71b",
         })
         .set({ Token: CustomerToken });
       expect(res.statusCode).toBe(200);
@@ -717,7 +715,7 @@ describe("** MANAGER **", () => {
         .send({
           manager: {
             _id: "63eb58feaeccfe9622ad5a9d",
-            Password: "12345678",
+            Password: "Hesam1376!",
           },
         })
         .set({ Token: ManagerToken });
@@ -774,7 +772,7 @@ describe("** MANAGER **", () => {
   describe("PUT: Amend facilities", () => {
     it("Should return error: no update object", async () => {
       const res = await supertest(app)
-        .put("/pool/management")
+        .put("/swimming-pool/management")
         .send({})
         .set({ Token: ManagerToken });
       expect(res.statusCode).toBe(400);
@@ -782,7 +780,7 @@ describe("** MANAGER **", () => {
     });
     it("Should return error: invalid attributes", async () => {
       const res = await supertest(app)
-        .put("/pool/management")
+        .put("/swimming-pool/management")
         .send({
           update: {
             Capacit: 2,
@@ -794,7 +792,7 @@ describe("** MANAGER **", () => {
     });
     it("Should amend pool capacity: => 15", async () => {
       const res = await supertest(app)
-        .put("/pool/management")
+        .put("/swimming-pool/management")
         .send({
           update: {
             Capacity: 15,
@@ -806,7 +804,7 @@ describe("** MANAGER **", () => {
     });
     it("Should amend pool capacity: => 30", async () => {
       const res = await supertest(app)
-        .put("/pool/management")
+        .put("/swimming-pool/management")
         .send({
           update: {
             Capacity: 30,

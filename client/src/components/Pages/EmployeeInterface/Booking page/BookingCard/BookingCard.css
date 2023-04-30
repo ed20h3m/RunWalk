@@ -1,40 +1,96 @@
-.edit-button 
-{   border: none;
+.edit-button {
+    border: none;
     outline: none;
     background: none;
-    cursor:pointer;
-    font-size:15px;
-    padding:5px;
-    padding-left: 25px;
-    padding-right:25px;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
     border-radius: 15px;
-    background-color: #ffc033;
+    background-color: white;
     color: #323232;
-    margin-top:10px;   
-}
-
-.edit-button:hover
-{
-    background-color: #d8980d;
+  }
+  
+  .edit-button:hover {
+    background-color: #dfdbd8;
     transition: all 0.3s ease-in-out;
-}
-
-.booking-card
-{
-    display:inline-block;
+  }
+  .add-to-cart {
+    margin-left: -11px;
+  }
+  .booking-card {
+    display: inline-block;
     color: #323232;
-    background-color: #fde047;
+    background-color: #333;
     font-size: 0.5rem;
-    padding:20px;
-    margin:30px;
+    padding: 8px;
+    margin: 8px 14px;
     text-align: center;
     border-radius: 15px;
-    width:250px;  
-}
-
-.booking-card h1 {
-    margin-top:10px;
+    width: 322px;
+    height: 300px;
+  }
+  .h1-title {
+    color: white;
+  }
+  .booking-card h1 {
+    margin-top: 10px;
     font-weight: normal;
-    font-size: small;
-}
-
+    font-size: medium;
+  }
+  .align-top {
+    padding-top: 0px !important;
+    padding-left: 35px !important;
+  }
+  .align-left {
+    padding-left: 35px !important;
+  }
+  .align-button {
+    text-align: left;
+    margin-top: 50px !important;
+  }
+  @media (max-width: 900px) {
+    .booking-card {
+      height: 375px !important;
+    }
+    .add-to-cart {
+      margin-left: 0px !important;
+      padding-left: 35px !important;
+    }
+  }
+  @media (max-width: 723px) {
+    .booking-card {
+      height: 455px !important;
+    }
+    .align-button {
+      text-align: left !important;
+      margin-top: 120px !important;
+    }
+  }
+  @media (max-width: 633px) {
+    .booking-card {
+      height: 575px !important;
+    }
+    .align-button {
+      text-align: left !important;
+      margin-top: 200px !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .booking-card {
+      height: 800px !important;
+    }
+    .align-button {
+      text-align: left !important;
+      margin-top: 270px !important;
+    }
+  }
+  @media (max-width: 580px) {
+    .booking-card {
+      height: 985px !important;
+    }
+    .align-button {
+      text-align: left !important;
+      margin-top: 480px !important;
+    }
+  }

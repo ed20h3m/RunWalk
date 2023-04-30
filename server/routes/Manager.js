@@ -14,7 +14,6 @@ const Manager = require("../Models/Manager");
 const bcrypt = require("bcryptjs");
 const ManagerAuthentication = require("../Middleware/ManagerAuthentication");
 const Info = require("../Models/Info");
-const { SendEmail } = require("../Email");
 const jwt_decode = require("jwt-decode");
 
 // GET METHOD: used to get a certain manager object
@@ -153,16 +152,6 @@ router.put("/change-password", ManagerAuthentication, async (req, res) => {
     // if manager doesn't exist return error
     if (!user)
       return res.status(400).json({ message: "Invalid Email", type: "error" });
-
-    // Construct Email content
-    const content = {
-      subject: "Password Change",
-      description:
-        "This Email is to inform you, your password has been changed",
-    };
-
-    // Send Email informing manager of the update
-    SendEmail(user.Email, content);
 
     // Respond with success message
     res.status(200).json({ message: "Password Updated", type: "Success" });

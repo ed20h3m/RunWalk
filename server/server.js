@@ -3,6 +3,8 @@
 
 // import functions required
 const express = require("express");
+require("dotenv").config();
+const path = require("path");
 const DatabaseString = require("./database");
 const server = express();
 

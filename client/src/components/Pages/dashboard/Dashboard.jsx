@@ -1,15 +1,18 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 //import sidebar component
-import Sidebar from "../../sidebar/Sidebar";
+import Sidebar from "../../../components/sidebar/Sidebar";
 import Barchart from "../../../common/barchart/Barchart";
 import Piechart from "../../../common/barchart/Piechart";
+import ActivityBarchart from "../../../common/barchart/ActivityBarchart";
 import { FacilitiesContext } from "../../../context/Facilities/FacilitiesState";
 import convertDate from "../../../common/components/convertDate";
 import "./dashboard.css";
 const Dashboard = () => {
   const [profit, setProfit] = React.useState("");
   const [prevale, setVale] = useState({});
+  const [prevaleActivity, setValeActivity] = useState({});
+
   const {
     TotalBookedSessions,
     GetBookedSessions,
@@ -71,26 +74,28 @@ const Dashboard = () => {
   const storeData = () => {
     if (prevale?.profit === "facility") {
       TotalProfitMadeAllFacilities(
-        convertDate(prevale.Date1.toDate()),
-        convertDate(prevale.Date2.toDate())
+        prevale?.Date1 ? convertDate(prevale?.Date1?.toDate()) : "",
+        prevale?.Date2 ? convertDate(prevale?.Date2?.toDate()) : ""
       );
-      setVale({ profit: null });
     }
     if (prevale?.profit === "activity") {
       TotalProfitMadeAllActivities(
-        convertDate(prevale.Date1.toDate()),
-        convertDate(prevale.Date2.toDate())
+        prevale?.Date1 ? convertDate(prevale?.Date1?.toDate()) : "",
+        prevale?.Date2 ? convertDate(prevale?.Date2?.toDate()) : ""
       );
-      setVale({ profit: null });
-    }
-    if (prevale?.profit != "activity" && prevale?.profit != "facility") {
-      GetBookedSessions(
-        convertDate(prevale.Date1.toDate()),
-        convertDate(prevale.Date2.toDate())
-      );
-      setVale({ profit: null });
     }
   };
+  const storeActivityData = () => {
+    GetBookedSessions(
+      prevaleActivity?.Date1
+        ? convertDate(prevaleActivity?.Date1?.toDate())
+        : "",
+      prevaleActivity?.Date2
+        ? convertDate(prevaleActivity?.Date2?.toDate())
+        : ""
+    );
+  };
+  console.log(prevaleActivity.length);
   return (
     <Container fluid>
       <Row style={{ width: "inherit" }}>
@@ -106,15 +111,15 @@ const Dashboard = () => {
         </Col>
         <Col lg={6} md={6} sm={10} xs={10}>
           <div className="main-content">
-            <Barchart
+            <ActivityBarchart
               data={facility}
               options={options}
               title="Activities"
               setProfit={setProfit}
               profit={profit}
-              setVale={setVale}
-              prevale={prevale}
-              storeData={storeData}
+              setVale={setValeActivity}
+              prevale={prevaleActivity}
+              storeData={storeActivityData}
             />
           </div>
           <div className="main-content" style={{ margin: "30px 0px" }}>

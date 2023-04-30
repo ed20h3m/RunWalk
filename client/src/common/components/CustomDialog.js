@@ -18,6 +18,7 @@ const CustomDialog = ({
   maxWidth,
   action,
 }) => {
+  // close dialog
   const handleClose = () => {
     setOpen(false);
 

@@ -5,7 +5,7 @@ import CustomDialog from "../components/CustomDialog";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 const Dialog = (props) => {
-  // import labels from the server
+  // objects destructuring: picking specific properties from the object
   const {
     open,
     setOpen,
@@ -16,9 +16,9 @@ const Dialog = (props) => {
     alertLoadDate,
     status,
   } = props;
-  const [validPassword, setValidPassword] = useState(false);
+  // usestate to declare the values
   const [errorMessage, setErrorMessage] = useState("");
-
+  // changes the values
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -31,32 +31,26 @@ const Dialog = (props) => {
     const value = event.target.value;
 
     if (value.length < 8) {
-      setValidPassword(false);
       setErrorMessage("Password must be at least 8 characters long");
       return;
     }
     if (!value.match(/[A-Z]/)) {
-      setValidPassword(false);
       setErrorMessage("Password must contain at least one uppercase letter");
       return;
     }
     if (!value.match(/[a-z]/)) {
-      setValidPassword(false);
       setErrorMessage("Password must contain at least one lowercase letter");
       return;
     }
     if (!value.match(/[0-9]/)) {
-      setValidPassword(false);
       setErrorMessage("Password must contain at least one number");
       return;
     }
     if (!value.match(/[!@#$%^&*-_()£+={}<>.,/]/)) {
-      setValidPassword(false);
       setErrorMessage("Password must contain at least one special character");
       return;
     }
     setErrorMessage("");
-    setValidPassword(true);
   };
 
   return (

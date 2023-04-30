@@ -1,13 +1,11 @@
-const app = require("./server");
-const path = require("path");
 require("dotenv").config();
-const express = require("express");
-
-app.use(express.static(path.join(__dirname, "build")));
-// app.use(express.static("./client/build"));
+const path = require("path");
+const app = require("./server");
 
 // Set port number
-console.log(path.resolve(__dirname, "build", "index.html"));
+app.use(express.static(path.join(__dirname, "build")));
+
+// Set port number
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV === "production") {
   app.get("/*", (req, res) => {

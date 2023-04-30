@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://runwalk.onrender.com",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -22,12 +21,10 @@
     "axios": "^1.3.4",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
-    "build": "^0.1.4",
     "chart.js": "^4.2.1",
     "dayjs": "^1.11.7",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
-    "npm": "^9.6.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-calendar": "^4.0.0",
@@ -38,7 +35,6 @@
     "react-router": "^6.9.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
-    "run": "^1.4.0",
     "stripe": "^11.16.0",
     "swiper": "^9.1.1",
     "uuid": "^8.3.2",
@@ -71,5 +67,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://runwalk.onrender.com"
+  "proxy": "http://localhost:5000/"
 }

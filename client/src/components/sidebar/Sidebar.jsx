@@ -31,7 +31,7 @@ const Sidebar = () => {
       <Nav.Item>
         <Nav.Link
           as={Link}
-          to="/dashboard"
+          to="/manager/dashboard"
           eventKey="dashboard"
           className={selected === "dashboard" ? "selected" : ""}
         >

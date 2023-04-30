@@ -411,7 +411,7 @@ export const SessionState = (props) => {
     item.Email = customer.Email;
     const dateTime = item.Date + " " + item.Time.slice(0, 3) + "00";
     const response = await CheckTeamEvents(dateTime, item.Facility);
-    // console.log(response);
+    console.log(response);
     // return
     if (response === "Exits") {
       SetAlert("Facility is booked for that time slot", "error");
