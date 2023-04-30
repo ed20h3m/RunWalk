@@ -80,7 +80,7 @@ const App = () => {
           }
         />
         {localStorage.EmployeeToken && (
-          <Route path="/employee" element={<AdminHomePage />} />
+          <Route path="/employee/home" element={<AdminHomePage />} />
         )}
         {localStorage.CustomerToken && (
           <Route path="/customer/home" element={<CustomerHomePage />} />
@@ -89,16 +89,16 @@ const App = () => {
           <Route path="/customer/activity" element={<CustomerActivityPage />} />
         )}
         {localStorage.ManagerToken && (
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/manager/Dashboard" element={<Dashboard />} />
         )}
         {localStorage.ManagerToken && (
-          <Route path="/staff" element={<Staff />} />
+          <Route path="/manager/staff" element={<Staff />} />
         )}
         {localStorage.ManagerToken && (
-          <Route path="/activities" element={<Activity />} />
+          <Route path="/manager/activities" element={<Activity />} />
         )}
         {localStorage.ManagerToken && (
-          <Route path="/membership" element={<Membership />} />
+          <Route path="/manage/membership" element={<Membership />} />
         )}
         {localStorage.EmployeeToken && (
           <Route path="/employee/booking" element={<Booking />} />

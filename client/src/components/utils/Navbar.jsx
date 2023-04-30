@@ -29,7 +29,7 @@ const Navbar = () => {
         {localStorage.CustomerToken && <a href="/profile">Profile</a>}
         {!isLoggedIn && <a href="/login">Login</a>}
         {!isLoggedIn && <a href="/signup">Sign up</a>}
-        {localStorage.EmployeeToken && <a href="/employee">Sessions</a>}
+        {localStorage.EmployeeToken && <a href="/employee/home">Sessions</a>}
         {localStorage.CustomerToken && <a href="/customer/home">Sessions</a>}
         {(localStorage.CustomerToken || localStorage.EmployeeToken) && (
           <a
@@ -69,7 +69,7 @@ const Navbar = () => {
         {localStorage.CustomerToken && <a href="/profile">Profile</a>}
         {!isLoggedIn && <a href="/login">Login</a>}
         {!isLoggedIn && <a href="/signup">Sign up</a>}
-        {localStorage.EmployeeToken && <a href="/employee">Sessions</a>}
+        {localStorage.EmployeeToken && <a href="/employee/home">Sessions</a>}
         {localStorage.CustomerToken && <a href="/customer/home">Sessions</a>}
         {(localStorage.CustomerToken || localStorage.EmployeeToken) && (
           <a

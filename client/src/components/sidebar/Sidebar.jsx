@@ -41,7 +41,7 @@ const Sidebar = () => {
       <Nav.Item>
         <Nav.Link
           as={Link}
-          to="/activities"
+          to="/manager/activities"
           eventKey="activities"
           className={selected === "activities" ? "selected" : ""}
         >
@@ -51,7 +51,7 @@ const Sidebar = () => {
       <Nav.Item>
         <Nav.Link
           as={Link}
-          to="/staff"
+          to="/manager/staff"
           eventKey="staff"
           className={selected === "staff" ? "selected" : ""}
         >
@@ -61,7 +61,7 @@ const Sidebar = () => {
       <Nav.Item>
         <Nav.Link
           as={Link}
-          to="/membership"
+          to="/manager/membership"
           eventKey="membership"
           className={selected === "membership" ? "selected" : ""}
         >
