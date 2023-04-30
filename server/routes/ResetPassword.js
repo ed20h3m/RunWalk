@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
   let link = "";
   jwt.sign(payload, secret, { expiresIn: "10m" }, async (err, token) => {
     if (err) console.log(err.message);
-    link = `http://localhost:3000/change-password/${customer._id}/${token}`;
+    link = `${process.env.CLIETN_URL}/change-password/${customer._id}/${token}`;
     const sender = nodemailer.createTransport({
       service: "gmail",
       auth: {
