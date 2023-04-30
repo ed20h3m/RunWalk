@@ -402,7 +402,7 @@ export const SessionState = (props) => {
     setTimeout(() => {
       if (localStorage.CustomerToken) window.location.href = "/customer/home";
       else if (localStorage.EmployeeToken) {
-        window.location.href = "/employee";
+        window.location.href = "/employee/home";
       }
     }, 2000);
   };

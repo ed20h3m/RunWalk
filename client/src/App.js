@@ -101,7 +101,7 @@ const App = () => {
           <Route path="/manager/membership" element={<Membership />} />
         )}
         {localStorage.EmployeeToken && (
-          <Route path="/employee/booking" element={<Booking />} />
+          <Route path="/employee/home/booking" element={<Booking />} />
         )}
         {<Route path="/forgotten-password" element={<ForgottenPassword />} />}
         <Route

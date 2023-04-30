@@ -108,7 +108,7 @@ export const FacilitiesState = (props) => {
     } else return SetAlert("No Permission"); // return error if there isn't a token
     try {
       ToggleLoading(true);
-      const res = await axios.get("stats/get-all-facility-info");
+      const res = await axios.get("/stats/get-all-facility-info");
       dispatch({ type: SET_ALL_FACILITIES, payload: res.data.data });
     } catch ({ response }) {
       SetAlert(response.data.message);
